@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendation</title>
+</head>
+<body>
+    <h1>Movie Recommendation</h1>
+    <form method="post" action="/">
+        <label for="user_id">User ID:</label>
+        <input type="number" name="user_id" id="user_id" required>
+        <input type="submit" value="Get Recommendations">
+    </form>
+    {% if user_id %}
+        <h2>Recommended Movies for User ID: {{ user_id }}</h2>
+        <table>
+            <tr>
+                <th>Yahoo! Movie ID</th>
+                <th>Title</th>
+            </tr>
+            {% for index, row in recommended_movies.iterrows() %}
+                <tr>
+                    <td>{{ row['Yahoo! Movie ID'] }}</td>
+                    <td>{{ row['Title'] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
